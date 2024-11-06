@@ -1,0 +1,15 @@
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<Placemark id="0">
+<ExtendedData>
+  <Data name="nama"><value>dki jakarta</value></Data>
+  <Data name="km"><value>661.5</value></Data>
+  <Data name="populasi"><value>11135.191</value></Data>
+  <Data name="tahun"><value>2024</value></Data></ExtendedData>
+  <Point><coordinates>106.83065605380222,-6.172833029407002</coordinates></Point></Placemark>
+<Placemark id="1">
+<ExtendedData>
+  <Data name="nama"><value>depok</value></Data>
+  <Data name="km"><value>200.3</value></Data>
+  <Data name="populasi"><value>1967.831</value></Data>
+  <Data name="tahun"><value>2024</value></Data></ExtendedData>
+  <Point><coordinates>106.82098719081705,-6.407272390001182</coordinates></Point></Placemark></Document></kml>
