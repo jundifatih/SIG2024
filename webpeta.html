@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Peta</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <style>
+        #map {
+         height: 800px;
+        }
+    </style>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        
+        // Open Streetmap
+        var map = L.map('map').setView([-6.3529191,106.8280102], 13);
+
+        // Penanda suatu titik sesua data GeoJson yang dimasukan
+        var marker = L.marker([-6.3529191, 106.8280102]).addTo(map);
+
+        // Data GeoJson
+        var data = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Kampus A STTNF",
+                "kota": "Depok",
+                "alamat": "Nurul Fikri, Jl. Tugu Raya, Depok City, West Java 16451, Indonesia"
+            },
+            "geometry": {
+                "coordinates": [
+                106.8418778,
+                -6.3627686
+                ],
+                "type": "Point"
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Kampus B STTNF",
+                "kota": "Jakarta Selatan",
+                "alamat": "STT Terpadu Nurul Fikri, Margonda Raya 522, Depok City, West Java 16424, Indonesia"
+            },
+            "geometry": {
+                "coordinates": [
+                106.8331746890106,
+                -6.360893183850607
+                ],
+                "type": "Point"
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Universitas Pancasila",
+                "kota": "Jakarta Selatan",
+                "alamat": "Universitas Pancasila, Jalan Lenteng Agung Barat, Jakarta, 12640, Indonesia"
+            },
+            "geometry": {
+                "coordinates": [
+                106.83309294973822,
+                -6.339285647792991
+                ],
+                "type": "Point"
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Universitas Gunadarma",
+                "kota": "Depok",
+                "alamat": "Universitas Gunadarma, Kampus E, Depok City, West Java 16451, Indonesia"
+            },
+            "geometry": {
+                "coordinates": [
+                106.83985239616555,
+                -6.353515588269104
+                ],
+                "type": "Point"
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Universitas Indonesia",
+                "kota": "Depok",
+                "alamat": "University of Indonesia, Jalan Lingkar Kampus Raya, Depok City, West Java 16424, Indonesia"
+            },
+            "geometry": {
+                "coordinates": [
+                106.82945627116317,
+                -6.363313152141046
+                ],
+                "type": "Point"
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "kampus": "Politeknik Negeri Media Kreatif Jakarta",
+                "kota": "Jakarta Selatan",
+                "alamat": "Jl. Srengseng Sawah Raya No.17, RT.8/RW.3, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630"
+            },
+            "geometry": {
+                "coordinates": [
+                106.8225176,
+                -6.3473483
+                ],
+                "type": "Point"
+            }
+            },
+            
+        ]
+        };
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        L.geoJSON(data, {
+
+            // Penanda satu titik berbentuk bulat
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            },
+
+            // Pop-up detail dari penanda bulat
+            onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.kampus + '<br></br>' + feature.properties.kota + '<br></br>' + feature.properties.alamat);
+            }
+        }).addTo(map);
+        
+    </script>
+</body>
+</html>
